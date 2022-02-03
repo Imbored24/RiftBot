@@ -8,7 +8,6 @@ class warn(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.guild.only()
     @commands.has_permissions(kick_members=True)
     async def warn(self, ctx, member: nextcord.Member=None, *, reason=None):
         if reason == None or member == None:
