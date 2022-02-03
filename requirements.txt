@@ -1,0 +1,4 @@
+PLEASE DELETE THIS LINE ONCE YOU HAVE READ IT. YOU COULD DO pip install nextcord motor pymongo[srv] or you could install it through the requirements.txt it up to you. PLEASE DELETE THIS LINE OR REQUIREMENTS.TXT WILL NOT WORK.
+nextcord
+motor
+pymongo[srv]
