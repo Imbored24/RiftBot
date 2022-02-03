@@ -15,6 +15,7 @@ async def on_ready():
     bot.mongo = motor.motor_asyncio.AsyncIOMotorClient(str(config.MONGODB))
     bot.db = bot.mongo["myFirstDatabase"]
     bot.config = Document(bot.db, "configs")
+    bot.warns = Document(bot.db, "warns")
     print("Database has been loaded!")
     for document in await bot.config.get_all():
         print(document)
