@@ -29,6 +29,24 @@ async def load(ctx, extension):
         await ctx.send(f'Only users with the ids: `{config.OWNER_ID}`, `{config.MANAGER_ID}`. Can run this command!')
 
 
+@bot.command()
+async def unload(ctx, extension):
+    if ctx.message.author.id == config.OWNER_ID or ctx.message.author.id == config.MANAGER_ID:
+        bot.unload.extension(f'cogs.{extension}')
+        await ctx.send(f"I have unloaded the cog `{extension}`!")
+        print(f'Cog unloaded with in discord\n{extension}')
+    else:
+        await ctx.send(f'Only users with the ids: `{config.OWNER_ID}, `{config.MANAGER_ID}`. Can use this command!')
+
+@bot.command()
+async def reload(ctx, extension):
+    if ctx.message.author.id == config.OWNER_ID or ctx.message.author.id == config.MANAGER_ID:
+        bot.reload_extension(f'cogs.{extension}')
+        await ctx.send(f"I have reloaded the cog `{extension}`!")
+        print(f'Cog reload with in discord\n{extension}')
+    else:
+        await ctx.send(f'Only users with the ids: `{config.OWNER_ID}`, {config.MANAGER_ID}. Can use this command!')
+
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
