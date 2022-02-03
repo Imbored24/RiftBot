@@ -22,7 +22,7 @@ async def on_ready():
 @bot.command()
 async def load(ctx, extension):
     if ctx.message.author.id == config.OWNER_ID or config.MANAGER_ID:
-        bot.load_extesnion(f'cogs.{extension}')    
+        bot.load_extension(f'cogs.{extension}')    
         await ctx.send(f'I have loaded the cog `{extension}`!')
         print(f'Cog loaded with in discord\n{extension}')
     else:
@@ -32,7 +32,7 @@ async def load(ctx, extension):
 @bot.command()
 async def unload(ctx, extension):
     if ctx.message.author.id == config.OWNER_ID or config.MANAGER_ID:
-        bot.unload.extension(f'cogs.{extension}')
+        bot.unload_extension(f'cogs.{extension}')
         await ctx.send(f"I have unloaded the cog `{extension}`!")
         print(f'Cog unloaded with in discord\n{extension}')
     else:
