@@ -1,7 +1,7 @@
 import asyncio
 
 import nextcord
-from nextcord.ext.menus import Paginator
+from discord.ext.buttons import Paginator
 
 class Pag(Paginator):
     async def teardown(self):
