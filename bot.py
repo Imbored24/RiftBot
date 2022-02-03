@@ -6,13 +6,17 @@ bot = commands.Bot(command_prefix=config.PREFIX)
 
 @bot.event
 async def on_ready():
-    print("Bot is online!")
+    print(f"Bot is online! \nId: {config.BOT_ID}\nUsername: {config.BOT_NAME}")
 
 @bot.command()
 async def load(ctx, extension):
-    bot.load_extesnion(f'cogs.{extension}')    
-    await ctx.send(f'I have loaded the cog `{extension}`!')
-    print(f'Cog loaded with in discord\n{extension}')
+    if ctx.message.author.id == config.OWNER_ID or ctx.message.author.id == config.MANAGER_ID:
+        bot.load_extesnion(f'cogs.{extension}')    
+        await ctx.send(f'I have loaded the cog `{extension}`!')
+        print(f'Cog loaded with in discord\n{extension}')
+    else:
+        await ctx.send(f'Only users with the ids: `{config.OWNER_ID}`, `{config.MANAGER_ID}`. Can run this command!')
+
 
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
