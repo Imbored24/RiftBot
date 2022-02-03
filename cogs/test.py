@@ -8,7 +8,7 @@ class test(commands.Cog):
     
     @commands.command()
     async def test(self, ctx):
-        if ctx.message.author.id == config.OWNER_ID or ctx.message.author.id == config.MANAGER_ID:
+        if ctx.message.author.id == config.OWNER_ID:
             await ctx.send("test")
         else:
             await ctx.send(f'Sorry this command is under testing. So only people with the ids: `{config.OWNER_ID}`, `{config.MANAGER_ID}` can run this command!')

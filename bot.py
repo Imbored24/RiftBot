@@ -21,7 +21,7 @@ async def on_ready():
 
 @bot.command()
 async def load(ctx, extension):
-    if ctx.message.author.id == config.OWNER_ID or ctx.message.author.id == config.MANAGER_ID:
+    if ctx.message.author.id == config.OWNER_ID or config.MANAGER_ID:
         bot.load_extesnion(f'cogs.{extension}')    
         await ctx.send(f'I have loaded the cog `{extension}`!')
         print(f'Cog loaded with in discord\n{extension}')
@@ -31,7 +31,7 @@ async def load(ctx, extension):
 
 @bot.command()
 async def unload(ctx, extension):
-    if ctx.message.author.id == config.OWNER_ID or ctx.message.author.id == config.MANAGER_ID:
+    if ctx.message.author.id == config.OWNER_ID or config.MANAGER_ID:
         bot.unload.extension(f'cogs.{extension}')
         await ctx.send(f"I have unloaded the cog `{extension}`!")
         print(f'Cog unloaded with in discord\n{extension}')
@@ -40,7 +40,7 @@ async def unload(ctx, extension):
 
 @bot.command()
 async def reload(ctx, extension):
-    if ctx.message.author.id == config.OWNER_ID or ctx.message.author.id == config.MANAGER_ID:
+    if ctx.message.author.id == config.OWNER_ID or config.MANAGER_ID:
         bot.reload_extension(f'cogs.{extension}')
         await ctx.send(f"I have reloaded the cog `{extension}`!")
         print(f'Cog reload with in discord\n{extension}')
