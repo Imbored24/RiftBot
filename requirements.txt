@@ -2,3 +2,4 @@ PLEASE DELETE THIS LINE ONCE YOU HAVE READ IT. YOU COULD DO pip install nextcord
 nextcord
 motor
 pymongo[srv]
+buttons
