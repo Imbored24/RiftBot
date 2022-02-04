@@ -30,7 +30,7 @@ class warn(commands.Cog):
 
         await self.bot.warns.upsert.custom(warn_filter, warn_data)
 
-        embed = nextcord.Embed(tile="You are being warned:", description=f"__**Reason**__:\n{reason}",colour=nextcord.Colour.red(), timestamp=ctx.message.created_at)
+        embed = nextcord.Embed(tile="You are being warned:", description=f"__**Reason**__:\n{reason}", timestamp=ctx.message.created_at)
         embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon_url)
         embed.set_footer(text=f"Warn: {current_warn_count}")
         try:
