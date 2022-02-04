@@ -4,7 +4,10 @@ import config
 import os
 import motor.motor_asyncio
 from utils.mongo import Document
-bot = commands.Bot(command_prefix=config.PREFIX)
+
+# Dont forget to enable all intents in the developer portal.
+intents = nextcord.Intents.all()
+bot = commands.Bot(command_prefix=config.PREFIX, intents=intents, help_command=None)
 
 @bot.event
 async def on_ready():
