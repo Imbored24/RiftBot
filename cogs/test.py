@@ -26,6 +26,8 @@ class test(commands.Cog):
             embed.add_field(name="7. No CyberBullying", value="Cyberbullying is a serious thing and we will not tolorate it here. Any sign of this in a members dms or this server will result in an immediate ban", inline=False)
             embed.add_field(name="8. Follow Discord TOS", value="Follow the discord TOS. (our bible) https://discord.com/tos", inline=False)
             await ctx.send(embed=embed)
+        else:
+            await ctx.send(f'Sorry this command is only available for the people with the ids: `{config.OWNER_ID}`, `{config.MANAGER_ID}` can run this command!')
 
 def setup(bot):
     bot.add_cog(test(bot))
