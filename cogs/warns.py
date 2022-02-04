@@ -7,7 +7,7 @@ class warns(commands.Cog):
         self.bot = bot
 
 
-    @commands.command()
+    @commands.command(name="warns", aliases=["checkwarns"], description="Checks to see how many warns a member has.", usage="[warns]")
     async def warns(self, ctx, member: nextcord.Member):
         warn_filter = {"user_id": member.id, "guild_id": member.guild.id}
         warns = await self.bot.warns.find_many_by_custom(warn_filter)
