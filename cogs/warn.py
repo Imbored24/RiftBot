@@ -2,7 +2,7 @@ import nextcord
 from nextcord.ext import commands
 
 from utils.util import Pag
-
+import utils.mongo
 class warn(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -28,10 +28,10 @@ class warn(commands.Cog):
         warn_filter = {"user_id": member.id, "guild_id": member.guild.id, "number": current_warn_count}
         warn_data = {"reason": reason, "timestamp": ctx.message.created_at, "warned_by": ctx.author.id}
 
-        await self.bot.warns.upsert.custom(warn_filter, warn_data)
+        await self.bot.warns.upsert_custom(warn_filter, warn_data)
 
-        embed = nextcord.Embed(tile="You are being warned:", description=f"__**Reason**__:\n{reason}", timestamp=ctx.message.created_at)
-        embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon_url)
+        embed = nextcord.Embed(title="You are being warned:", description=f"__**Reason**__:\n{reason}", timestamp=ctx.message.created_at)
+        embed.set_author(name=ctx.guild.name)
         embed.set_footer(text=f"Warn: {current_warn_count}")
         try:
             await member.send(embed=embed)
