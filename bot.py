@@ -6,8 +6,23 @@ import motor.motor_asyncio
 from utils.mongo import Document
 
 # Dont forget to enable all intents in the developer portal.
+async def get_prefix(bot, message):
+    if not message.guild:
+        return commands.when_mentioned_or(bot.DEFAULTPREFIX)(bot,message)
+
+    try:
+        data = await bot.config.find(message.guild.id)
+
+        if not data or "prefix" not in data:
+            return commands.when_mentioned_or(bot.DEFAULTPREFIX)(bot,message)
+        return commands.when_mentioned_or(data["prefix"])(bot,message)
+    except:
+        return commands.when_mentioned_or(bot.DEFAULTPREFIX)(bot,message)
 intents = nextcord.Intents.all()
-bot = commands.Bot(command_prefix=config.PREFIX, intents=intents, help_command=None)
+bot = commands.Bot(command_prefix=get_prefix, intents=intents, help_command=None)
+
+
+bot.DEFAULTPREFIX = config.PREFIX
 
 @bot.event
 async def on_ready():
